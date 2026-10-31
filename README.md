@@ -1,72 +1,53 @@
-# SkyVoyage - Online Flight Booking System (Full-Stack College Project)
+# ✈️ SkyVoyage Pro v3 — Vivid AI Flight Booking, ±2 Days Deals & Home-to-Airport Route Map
 
-Ye project **HTML5, CSS3, JavaScript (Frontend)**, **Python Flask (Backend)**, aur **SQLite / PostgreSQL (Database)** par bana ek complete Full-Stack Flight Reservation System hai. Iske har code file mein **Hinglish comments** likhe gaye hain taaki aap har line ka matlab samajh sakein aur Viva mein aasani se explain kar sakein.
-
----
-
-## 📂 Project Directory Structure
-
-```text
-skyvoyage_project/
-│
-├── app.py                  # Flask Backend Server & REST APIs (with Hinglish comments)
-├── models.py               # SQLAlchemy Database Tables: Flight, Booking, Passenger
-├── seed_data.py            # Initial domestic flights database seeder
-├── requirements.txt        # Required Python libraries list
-├── .env.example            # Database connection configuration example
-├── .gitignore              # Git version control ignore rules
-├── README.md               # Step-by-Step Setup & Viva Guide
-│
-├── templates/
-│   └── index.html          # Main Frontend UI (Search, Seat Map, Boarding Pass)
-│
-└── static/
-    ├── css/
-    │   └── style.css       # Responsive CSS Styling & Print Media Queries
-    └── js/
-        └── app.js          # Frontend Fetch API Logic & Interactive Seat Selection
-```
+**SkyVoyage Pro v3** is a full-stack web engineering college project built with **HTML5, CSS3, Vanilla JavaScript (ES6+), Leaflet.js Maps** on the frontend and **Python Flask + SQLAlchemy ORM (SQLite & PostgreSQL)** on the backend.
 
 ---
 
-## 🚀 Step-by-Step: Apne Laptop Par Kaise Run Karein
+## 🌟 10 Standout Features of SkyVoyage Pro v3
 
-### Step 1: Zip File Extract Karein
-Zip file ko extract karein aur VS Code ya Terminal mein `skyvoyage_project` folder kholein:
-```bash
-cd skyvoyage_project
-```
+### 1. 🎨 Vivid Aurora UI & Color-Coded Flight Fare Boxes
+* **🟢 Green Flight Box (`.tier-cheapest`)**: Automatically highlights the cheapest flights on the route in a rich emerald-green card with a `🟢 CHEAPEST FLIGHT • BEST SAVER DEAL` ribbon.
+* **🟡 Amber/Gold Flight Box (`.tier-moderate`)**: Highlights mid-range smart-value flights in warm amber/gold.
+* **🔴 Red/Coral Flight Box (`.tier-expensive`)**: Highlights high-demand peak-fare flights in crimson/coral red (`🔴 EXPENSIVE • HIGH DEMAND PEAK FARE`) so travelers can spot price tiers at a glance.
 
-### Step 2: Virtual Environment Banayein aur Activate Karein
-* **Windows (Command Prompt / PowerShell):**
-  ```cmd
-  python -m venv venv
-  venv\Scripts\activate
-  ```
-* **Mac / Linux:**
-  ```bash
-  python3 -m venv venv
-  source venv/bin/activate
-  ```
+### 2. 📅 Smart ±2 Days Flexible Date Finder (e.g., Searching 4 Dec Shows 2 Dec – 6 Dec Deals)
+* Whenever a user selects any departure date (such as **`4 Dec 2026`**), the website automatically computes and displays fares for **1 to 2 days earlier and 1 to 2 days later (`2 Dec`, `3 Dec`, `4 Dec`, `5 Dec`, `6 Dec`)**.
+* Displays both a **5-Day Flexible Date Comparison Ribbon** at the top and a dedicated **"💰 Cheaper Flights Available 1–2 Days Around Your Selected Date"** section at the bottom with 1-click date switching and booking.
 
-### Step 3: Libraries Install Karein
-```bash
-pip install -r requirements.txt
-```
+### 3. 🗺️ Interactive Home-to-Airport Live Route Map & "Leave Home By" Calculator
+* Integrated **Leaflet.js (OpenStreetMap)** route planner that connects the traveler's **Residential Area** (e.g., *Jakkasandra / Koramangala*, *HSR Layout*, *Indiranagar*, *Whitefield* in Bengaluru; *Connaught Place*, *Dwarka*, *Hauz Khas* in Delhi; *Bandra*, *Andheri*, *Colaba* in Mumbai; *Gachibowli* in Hyderabad; *Panjim* in Goa — or any custom typed locality) directly to the **Departure Airport Terminal**.
+* Displays exact **Road Distance (`km`)**, **Fastest Highway/Expressway**, **Live Traffic Drive Time**, and calculates the exact **"Recommended Time to Leave Home"** (`Flight Departure Time - 2h Check-in Buffer - Road Drive Time`).
+* Includes an interactive **"🚕 Animate Cab Journey on Map"** simulation and a 1-click **Google Maps Live Turn-by-Turn Navigation** launcher.
 
-### Step 4: Server Start Karein
-```bash
-python app.py
-```
-Ab browser khol kar **`http://127.0.0.1:5000`** par jayein!
+### 4. 🛫 Real Indian Domestic Airline Schedules & Fares
+* Includes 21+ real domestic flights across **BLR, DEL, BOM, GOI, HYD, CCU, MAA, and JAI** (**IndiGo `6E-204`**, **Air India `AI-804`**, **Akasa Air `QP-1304`**, **Air India Express `IX-2742`**, **SpiceJet `SG-8710`**).
+
+### 5. 📈 AI Fare Predictor & 7-Day Interactive Price Trend Box
+* Displays the **Google Flights Fair Price Band**, **Buy Now vs. Wait Confidence Score**, **Price Drop Alert Toggle**, and a clickable **7-Day Price Bar Graph**.
+
+### 6. 👨‍👩‍👧‍👦 Multi-Passenger Group Booking & Multi-Seat Aircraft Map (1 to 4 Travelers)
+* Supports booking for **1 to 4 Travelers** simultaneously, selecting multiple seats (`3A, 3B, 3C`) on the 42-seat aircraft cabin grid, and storing 1-to-Many passenger records in SQL.
+
+### 7. 🚕 Landing-Time Synced Airport Cab Pre-Booking
+* Automatically schedules destination airport pickup for **`Flight Arrival Time + 20 mins`** with Mini Hatch (`₹499`), BluSmart EV Sedan (`₹749`), and Prime SUV Innova (`₹1,199`) options.
+
+### 8. 🍽️ Smart Layover & VIP Terminal Lounge Pass Recommender
+* Recommends a discounted **Terminal VIP Lounge & Hot Buffet Pass (`+₹299/pax`)** based on departure hour and prints a lounge voucher on the Boarding Pass.
+
+### 9. 🌤️ Live Destination Weather & Packing Advisory
+* Displays destination temperature, sky condition, and a tailored packing tip in both the search dashboard and the Boarding Pass.
+
+### 10. 🤖 SkyBot AI Travel Assistant Chatbot
+* Floating conversational assistant answering English and Hinglish queries about green cheapest flights, ±2 days deals, airport map routes, lounge passes, and weather tips.
 
 ---
 
-## 🎓 Top Viva Questions & Answers (Examiner ke liye)
+## 🛠️ Technology Stack
 
-1. **Q: Humne `models.py` mein SQLAlchemy ORM kyu use kiya?**
-   * **Ans:** SQLAlchemy ORM Python classes ko SQL tables mein convert karta hai. Isse humein SQLite se PostgreSQL par jane ke liye code nahi badalna padta, sirf `DATABASE_URL` badalna hota hai.
-2. **Q: Ek hi seat do log book na kar lein, ye kaise roka gaya hai?**
-   * **Ans:** `app.py` ke `POST /api/book` route mein hum database check karte hain ki us `flight_id`, `travel_date`, aur `seat_number` par pehle se koi `CONFIRMED` booking toh nahi hai. Agar hai, toh server `HTTP 409 Conflict` return kar deta hai.
-3. **Q: Frontend aur Backend aapas mein kaise baat karte hain?**
-   * **Ans:** `static/js/app.js` mein JavaScript `fetch()` API ke zariye HTTP GET, POST, aur DELETE requests bhejta hai, aur Flask backend JSON format mein data wapas bhejta hai.
+| Layer | Technology Used | Purpose in Project |
+| :--- | :--- | :--- |
+| **Frontend UI & Maps** | HTML5, CSS3, Vanilla JS ES6+, Leaflet.js | Vivid responsive UI, Green/Amber/Red fare tiers, ±2 days engine, interactive GPS map |
+| **Backend Server** | Python 3, Flask, Flask-CORS (`app.py`) | RESTful APIs, PNR generation, seat conflict prevention, fare & tax calculation |
+| **Database & ORM** | SQLAlchemy ORM (`models.py`) | Relational schema (`flights`, `bookings`, `passengers`) for SQLite & PostgreSQL |
+| **Version Control** | Git & GitHub (`.gitignore`) | Commit tracking and GitHub Pages live hosting |

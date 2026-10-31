@@ -233,7 +233,15 @@ def create_app():
             db.session.commit()
             flights = Flight.query.filter_by(origin=origin, destination=destination).all()
 
-        flights_data = [f.to_dict() for f in flights]
+        flights_data = []
+        travel_class = request.args.get('travel_class', 'Economy')
+        class_mult = 2.25 if 'business' in travel_class.lower() else (1.45 if 'premium' in travel_class.lower() else 1.0)
+
+        for f in flights:
+            f_dict = f.to_dict()
+            f_dict['baseEconomyPrice'] = f_dict['price']
+            f_dict['price'] = round(f_dict['price'] * class_mult)
+            flights_data.append(f_dict)
 
         if sort_by == 'price':
             flights_data.sort(key=lambda x: x['price'])
@@ -342,10 +350,13 @@ def create_app():
             if not Booking.query.filter_by(pnr=generated_pnr).first():
                 break
 
-        # Multi-Passenger Fare Calculation
-        base_fare = flight.base_price * pax_count
+        # Cabin Class & Multi-Passenger Fare Calculation
+        travel_class_str = data.get('travelClass', 'Economy')
+        class_mult = 2.25 if 'business' in travel_class_str.lower() else (1.45 if 'premium' in travel_class_str.lower() else 1.0)
+        per_pax_fare = round(flight.base_price * class_mult)
+        base_fare = per_pax_fare * pax_count
         tax_amount = round(base_fare * 0.12, 2)
-        seat_fee = float(data.get('seatFee', 150.0 * pax_count))
+        seat_fee = float(data.get('seatFee', 0.0 if class_mult == 2.25 else 150.0 * pax_count))
         lounge_included = bool(data.get('loungeIncluded', False))
         lounge_fee = float(data.get('loungeFee', 0.0))
         cab_type = data.get('cabType', 'None')
